@@ -1,3 +1,4 @@
+import SiteHeader from './components/siteHeader'
 import MovieReviewPage from "./pages/movieReviewPage";
 import React from "react";
 import ReactDOM from "react-dom";
@@ -9,22 +10,11 @@ import FavoriteMoviesPage from './pages/favoritesMoviesPage'       // NEW
 
 const App = () => {
   return (
-    <BrowserRouter>
-    <div className="jumbotron">
-      <div className="container-fluid">
-        <ul className="navbar-nav text-black">
-          <li className="nav-item">
-            <Link className="nav-link " to="/">
-              Home
-            </Link>
-          </li>
-          <li className="nav-item">
-            <Link className="nav-link " to="/movies/favorites">
-              Favorites
-            </Link>
-          </li>
-        </ul>
-        <Switch>
+      <BrowserRouter>
+        <div className="jumbotron">
+          <SiteHeader />      {/* New Header  */}
+          <div className="container-fluid">
+            <Switch>
           <Route path="/reviews/:id" component={MovieReviewPage} /> 
           <Route exact path="/movies/favorites" component={FavoriteMoviesPage} />
           <Route path="/movies/:id" component={MoviePage} />
