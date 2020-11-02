@@ -73,8 +73,32 @@ describe("Home Page ", () => {
                   cy.wrap($card)
                     .find(".card-title")
                     .should("have.text", matchingMovies[index].title);
+                });          
+              });
+        })
+        describe("By title and movie genre" ,() => {
+            it("should display movies with the specified movie title and genre ", () => {
+                const searchString = "m";
+                const matchingMovies = filterByTitle(movies, searchString);
+                cy.get("input").clear().type(searchString);
+                cy.get(".card").should("have.length", matchingMovies.length);
+                cy.get(".card").each(($card, index) => {
+                  cy.wrap($card)
+                  .find(".card-title")
+                  .should("have.text", matchingMovies[index].title);
+                })
+                const selectedGenreId = 35;
+                const selectedGenreText = "Comedy";
+                const matchingMovies0 = filterByGenre(matchingMovies, selectedGenreId);
+                cy.get("select").select(selectedGenreText); 
+                cy.get(".card").should("have.length", matchingMovies0.length);
+                cy.get(".card").each(($card, index) => {
+                  cy.wrap($card)
+                    .find(".card-title")
+                    .should("have.text", matchingMovies0[index].title);
                 });      
               });
         })
       })
+
     })
