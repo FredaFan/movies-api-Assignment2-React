@@ -54,7 +54,6 @@ describe("Movie Details Page", () => {
   });
   it("should display the poster image with the correct SRC value", () => {
     cy.get("img.movie")
-      
       .should("have.attr", "src")
       .should("include", movie.poster_path);
   });
