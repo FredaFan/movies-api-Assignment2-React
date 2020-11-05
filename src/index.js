@@ -10,6 +10,7 @@ import FavoriteMoviesPage from './pages/favoritesMoviesPage'       // NEW
 import UpcomingMoviesPage from './pages/upcomingMoviesPage'       // NEW
 import MoviesContextProvider from "./contexts/moviesContext";
 import GenresContextProvider from "./contexts/genresContext";
+import AddMovieReviewPage from './pages/addMovieReviewPage'
 const App = () => {
   return (
     <BrowserRouter>
@@ -18,7 +19,8 @@ const App = () => {
         <div className="container-fluid">
           <MoviesContextProvider>
             <GenresContextProvider>    {/* NEW */}
-              <Switch>
+            <Switch>
+        <Route exact path="/reviews/form" component={AddMovieReviewPage} />
           <Route path="/movies/upcoming" component={UpcomingMoviesPage} /> 
           <Route path="/reviews/:id" component={MovieReviewPage} /> 
           <Route exact path="/movies/favorites" component={FavoriteMoviesPage} />
