@@ -152,3 +152,17 @@ storiesOf("Movie Details Page/MovieHeader", module)
     <MemoryRouter initialEntries={["/"]}>{story()}</MemoryRouter>
   ))
   .add("default", () => <MovieHeader movie={sample} />);
+
+  storiesOf("Favorite Page/Header", module).add("default", () => (
+    <MoviesHeader title="Favorite Movies" numMovies={0} />
+  ));
+
+  storiesOf("Favorite Page/FilterControls", module)
+  .addDecorator(story => (
+    <GenresContextProvider>{story()}</GenresContextProvider>
+  ))
+  .add("default", () => (
+    <FilterControls onUserInput={action("button-click")} numMovies={10} />
+  ));
+
+  
