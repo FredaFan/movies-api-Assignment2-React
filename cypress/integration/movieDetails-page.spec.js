@@ -57,4 +57,5 @@ describe("Movie Details Page", () => {
       .should("have.attr", "src")
       .should("include", movie.poster_path);
   });
+  
 });
