@@ -1,7 +1,6 @@
 let movies;
 const movieId = 497582; // Enola Holmes movie id
 let reviews;
-const reviewId = "5f69e4d0cee2f6003633becf";
 
 describe("Navigation", () => {
   before(() => {
@@ -48,25 +47,24 @@ describe("Navigation", () => {
       cy.get("h2").contains("No. Movies");
     });
   });
-  // describe("From the Movie Details page ", () => {
-  //   beforeEach(() => {
-  //     cy.visit(`/movies/${movieId}`);
-  //   });
-  //   it("should change browser URL when show/hide reviews is clicked", () => {
-  //     cy.contains("Show Reviews").click();
-  //     cy.url().should("include", `/movies/${movieId}/reviews`);
-  //     cy.contains("Hide Reviews").click();
-  //     cy.url().should("not.include", `/movies/${movieId}/reviews`);
-  //   });
-  //   it("navigate to the full review page when a 'Full Review' link is clicked", () => {
-  //     // TODO
-  //     cy.contains("Show Reviews").click();
-  //     cy.url().should("include", `/movies/${movieId}/reviews`);
-  //     cy.contains("Full Review").click();
-  //     cy.url().should("include", `/reviews/${reviewId}`);
-      
-  //   });
-  // });
+
+  /*describe("From the Movie Details page ", () => {
+    beforeEach(() => {
+      cy.visit(`/movies/${movieId}`);
+    });
+    it("should change browser URL when show/hide reviews is clicked", () => {
+      cy.contains("Show Reviews").click();
+      cy.url().should("include", `/movies/${movieId}/reviews`);
+      cy.contains("Hide Reviews").click();
+      cy.url().should("not.include", `/movies/${movieId}/reviews`);
+    });
+    it("navigate to the full review page when a 'Full Review' link is clicked", () => {
+      cy.visit(`/movies/${movieId}/reviews`);
+      cy.contains("Full Review").click();
+      cy.url().should("include", `/reviews`);
+    });
+  });*/
+
   describe("From the Favorites page", () => {
     beforeEach(() => {
       cy.visit("/");
@@ -79,6 +77,7 @@ describe("Navigation", () => {
       cy.get("h2").contains(movies[0].title);
     });
   });
+
   describe("The Go Back button", () => {
     beforeEach(() => {
       cy.visit("/");
@@ -90,16 +89,13 @@ describe("Navigation", () => {
       cy.get("h2").contains("No. Movies");
     });
     it("should navigate from favorites page to movie details and back", () => {
-        cy.visit("/");
-      cy.get(".card").eq(1).find("button").click();
-      cy.get("nav").find("li").eq(2).find("a").click();
+        cy.get(".card").eq(0).find("button").click();
+        cy.get("nav").find("li").eq(2).find("a").click();
         cy.get(".card").eq(0).find("img").click();
-      cy.url().should("include", `/movies/${movies[1].id}`);
-      cy.get("h2").contains(movies[1].title);
-      
-      cy.get("svg[data-icon=arrow-circle-left]").click();
-      cy.url().should("include", `/movies/favorites`);
-      cy.get("h2").contains("Favorite Movies");
+        cy.get("svg[data-icon=arrow-circle-left]").click();
+        cy.url().should("not.include", `/movies/${movieId}`);
+        cy.get("h2").contains("Favorite Movies");
     });
   });
+
 });
