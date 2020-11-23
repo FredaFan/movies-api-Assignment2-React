@@ -28,7 +28,8 @@ describe("Movie Details Page", () => {
       })
   });
   beforeEach(() => {
-    cy.visit(`/movies/${movie.id}`);
+    cy.visit(`/`);
+    cy.get(".card").eq(2).find("img").click();
   });
 
   it("should display movie title in the page header", () => {
@@ -57,5 +58,5 @@ describe("Movie Details Page", () => {
       .should("have.attr", "src")
       .should("include", movie.poster_path);
   });
-  
+
 });
