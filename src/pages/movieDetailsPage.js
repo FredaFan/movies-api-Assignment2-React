@@ -3,6 +3,7 @@ import { Link, Route, withRouter } from "react-router-dom";
 import MovieDetails from "../components/movieDetails";
 import PageTemplate from "../components/templateMoviePage";
 import MovieReviews from "../components/movieReviews";
+import MovieSimilar from "../components/movieSimilar";
 import useMovie from "../hooks/useMovie";
 
 const MoviePage = props => {
@@ -37,6 +38,30 @@ const MoviePage = props => {
         <Route
           path={`/movies/:id/reviews`}
           render={props => <MovieReviews movie={movie} {...props} />}
+        />
+
+       <div className="row">
+          <div className="col-12 ">
+            {!props.history.location.pathname.endsWith("/similar") ? (
+              <Link
+                className="btn btn-primary btn-block active"
+                to={`/movies/${id}/similar`}
+              >
+                Show Similar Movies(Extracts)
+              </Link>
+            ) : (
+              <Link
+                className="btn btn-primary btn-block active"
+                to={`/movies/${id}`}
+              >
+                Hide Similar Movies
+              </Link>
+            )}
+          </div>
+        </div>
+        <Route
+          path={`/movies/:id/similar`}
+          render={props => <MovieSimilar movie={movie} {...props} />}
         />
       </>
     ) : (

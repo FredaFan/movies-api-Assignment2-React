@@ -57,4 +57,5 @@ describe("Movie Details Page", () => {
     cy.get("img")
       .should("have.attr", "src")
   });
+  
 });
