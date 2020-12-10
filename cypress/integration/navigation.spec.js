@@ -52,6 +52,7 @@ describe("Navigation", () => {
   describe("From the home page", () => {
     beforeEach(() => {
       cy.visit("/");
+      cy.wait(2000);
     });
     it("should navigate to the movie details page and change browser URL", () => {
       cy.get(".card").eq(1).find("img").click();
@@ -75,6 +76,7 @@ describe("Navigation", () => {
   describe("From the Movie Details page ", () => {
     beforeEach(() => {
       cy.visit(`/movies/${movieId}`);
+      cy.wait(2000);
     });
     it("should change browser URL when show/hide reviews is clicked", () => {
       cy.contains("Show Reviews").click();
