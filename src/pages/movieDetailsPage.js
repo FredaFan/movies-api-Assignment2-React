@@ -4,6 +4,7 @@ import MovieDetails from "../components/movieDetails";
 import PageTemplate from "../components/templateMoviePage";
 import MovieReviews from "../components/movieReviews";
 import MovieSimilar from "../components/movieSimilar";
+import MovieRecommendations from "../components/movieRecommendations";
 import useMovie from "../hooks/useMovie";
 
 const MoviePage = props => {
@@ -62,6 +63,29 @@ const MoviePage = props => {
         <Route
           path={`/movies/:id/similar`}
           render={props => <MovieSimilar movie={movie} {...props} />}
+        />
+        <div className="row">
+          <div className="col-12 ">
+            {!props.history.location.pathname.endsWith("/recommendations") ? (
+              <Link
+                className="btn btn-primary btn-block active"
+                to={`/movies/${id}/recommendations`}
+              >
+                Show Recommendations Movies(Extracts)
+              </Link>
+            ) : (
+              <Link
+                className="btn btn-primary btn-block active"
+                to={`/movies/${id}`}
+              >
+                Hide Recommendations Movies
+              </Link>
+            )}
+          </div>
+        </div>
+        <Route
+          path={`/movies/:id/recommendations`}
+          render={props => <MovieRecommendations movie={movie} {...props} />}
         />
       </>
     ) : (
