@@ -5,6 +5,8 @@ import PageTemplate from "../components/templateMoviePage";
 import MovieReviews from "../components/movieReviews";
 import MovieSimilar from "../components/movieSimilar";
 import MovieRecommendations from "../components/movieRecommendations";
+import MovieCast from "../components/movieCast";
+import MovieCrew from "../components/movieCrew";
 import useMovie from "../hooks/useMovie";
 
 const MoviePage = props => {
@@ -87,6 +89,55 @@ const MoviePage = props => {
           path={`/movies/:id/recommendations`}
           render={props => <MovieRecommendations movie={movie} {...props} />}
         />
+        <div className="row">
+          <div className="col-12 ">
+            {!props.history.location.pathname.endsWith("/cast") ? (
+              <Link
+                className="btn btn-primary btn-block active"
+                to={`/movies/${id}/cast`}
+              >
+                Show Cast(Extracts)
+              </Link>
+            ) : (
+              <Link
+                className="btn btn-primary btn-block active"
+                to={`/movies/${id}`}
+              >
+                Hide Cast
+              </Link>
+            )}
+          </div>
+        </div>
+        <Route
+          path={`/movies/:id/cast`}
+          render={props => <MovieCast movie={movie} {...props} />}
+        />
+
+         <div className="row">
+          <div className="col-12 ">
+            {!props.history.location.pathname.endsWith("/crew") ? (
+              <Link
+                className="btn btn-primary btn-block active"
+                to={`/movies/${id}/crew`}
+              >
+                Show Crew(Extracts)
+              </Link>
+            ) : (
+              <Link
+                className="btn btn-primary btn-block active"
+                to={`/movies/${id}`}
+              >
+                Hide Crew
+              </Link>
+            )}
+          </div>
+        </div>
+        <Route
+          path={`/movies/:id/crew`}
+          render={props => <MovieCrew movie={movie} {...props} />}
+        />
+
+        
       </>
     ) : (
       <p>Waiting for movie details</p>
@@ -95,4 +146,4 @@ const MoviePage = props => {
   );
 };
 
-export default withRouter(MoviePage);
+export default withRouter(MoviePage);/*  */
