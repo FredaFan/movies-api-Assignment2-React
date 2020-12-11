@@ -19,6 +19,7 @@ export default ({ movie }) => {
         <li key="rdv" className="list-group-item ">
           {movie.release_date}
         </li>
+        
       </ul>
 
       <ul className="list-group list-group-horizontal">
@@ -62,6 +63,21 @@ export default ({ movie }) => {
           </li>
         ))}
       </ul>
+      <ul className="list-group list-group-horizontal">
+      <li key="vocc" className="list-group-item list-group-item-dark">
+          Vote Count
+        </li>
+        <li key="voc" className="list-group-item ">
+          {movie.vote_count}
+        </li>
+        <li key="popu" className="list-group-item list-group-item-dark">
+          Popularity
+        </li>
+        <li key="pop" className="list-group-item ">
+          {movie.popularity}
+        </li>
+      </ul>
+      
     </>
   );
 };
