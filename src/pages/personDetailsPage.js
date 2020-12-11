@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, Route, withRouter } from "react-router-dom";
+import { withRouter } from "react-router-dom";
 import PersonDetails from "../components/personDetails";
 import PeoplePageTemplate from "../components/templatePersonPage";
 
