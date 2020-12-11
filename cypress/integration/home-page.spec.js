@@ -99,6 +99,14 @@ describe("Home Page ", () => {
                 });      
               });
         })
+        describe("Add to favourite button test", () => {
+          it("should disappears in home page when click the button", () => {
+            cy.wait(2000);
+            cy.contains("Add to Favorites").click();
+            cy.get(".badge").contains(19);
+          });
+        })
+
       })
 
     })
