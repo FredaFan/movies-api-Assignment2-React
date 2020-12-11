@@ -77,4 +77,19 @@ describe("Movie Details Page", () => {
     cy.contains("Hide Recommendations Movies").click();
     cy.url().should("not.include", `/movies/${movieId}/recommendations`);
   });
+
+  it("should change browser URL when show/hide Cast is clicked", () => {
+    cy.visit(`/movies/${movieId}`);
+    cy.contains("Show Cast").click();
+    cy.url().should("include", `/movies/${movieId}/cast`);
+    cy.contains("Hide Cast").click();
+    cy.url().should("not.include", `/movies/${movieId}/cast`);
+  });
+  it("should change browser URL when show/hide Crew is clicked", () => {
+    cy.visit(`/movies/${movieId}`);
+    cy.contains("Show Crew").click();
+    cy.url().should("include", `/movies/${movieId}/crew`);
+    cy.contains("Hide Crew").click();
+    cy.url().should("not.include", `/movies/${movieId}/crew`);
+  });
 });

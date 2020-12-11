@@ -73,7 +73,7 @@ describe("Navigation", () => {
     });
   });
 
-  describe("From the Movie Details page ", () => {
+  /*describe("From the Movie Details page ", () => {
     beforeEach(() => {
       cy.visit(`/`);
     cy.get(".card").eq(0).find("img").click();
@@ -130,7 +130,7 @@ describe("Navigation", () => {
       cy.contains("Hide Crew").click();
       cy.url().should("not.include", `/movies/${movieId}/crew`);
     });
-  });
+  });*/
 
   describe("From the Favorites page", () => {
     beforeEach(() => {
