@@ -52,7 +52,7 @@ describe("Navigation", () => {
   describe("From the home page", () => {
     beforeEach(() => {
       cy.visit("/");
-      cy.wait(2000);
+      
     });
     it("should navigate to the movie details page and change browser URL", () => {
       cy.get(".card").eq(1).find("img").click();
@@ -73,13 +73,15 @@ describe("Navigation", () => {
     });
   });
 
-  /*describe("From the Movie Details page ", () => {
+  describe("From the Movie Details page ", () => {
     beforeEach(() => {
+      cy.visit(`/`);
+    cy.get(".card").eq(0).find("img").click();
       
-      cy.visit(`/movies/${movieId}`);
       
     });
     it("should change browser URL when show/hide reviews is clicked", () => {
+      cy.visit(`/movies/${movieId}`);
       cy.contains("Show Reviews").click();
       cy.url().should("include", `/movies/${movieId}/reviews`);
       cy.contains("Hide Reviews").click();
@@ -91,6 +93,7 @@ describe("Navigation", () => {
       cy.url().should("include", `/reviews`);
     });
     it("should change browser URL when show/hide Similar movies is clicked", () => {
+      cy.visit(`/movies/${movieId}`);
       cy.contains("Show Similar Movies").click();
       cy.url().should("include", `/movies/${movieId}/similar`);
       cy.contains("Hide Similar Movies").click();
@@ -102,6 +105,7 @@ describe("Navigation", () => {
       cy.url().should("include", `/${similar[0].id}`);
     });
     it("should change browser URL when show/hide Recommendations movies is clicked", () => {
+      cy.visit(`/movies/${movieId}`);
       cy.contains("Show Recommendations Movies").click();
       cy.url().should("include", `/movies/${movieId}/recommendations`);
       cy.contains("Hide Recommendations Movies").click();
@@ -112,7 +116,21 @@ describe("Navigation", () => {
       cy.contains("Full Details").click();
       cy.url().should("include", `/${recommendations[0].id}`);
     });
-  });*/
+    it("should change browser URL when show/hide Cast is clicked", () => {
+      cy.visit(`/movies/${movieId}`);
+      cy.contains("Show Cast").click();
+      cy.url().should("include", `/movies/${movieId}/cast`);
+      cy.contains("Hide Cast").click();
+      cy.url().should("not.include", `/movies/${movieId}/cast`);
+    });
+    it("should change browser URL when show/hide Crew is clicked", () => {
+      cy.visit(`/movies/${movieId}`);
+      cy.contains("Show Crew").click();
+      cy.url().should("include", `/movies/${movieId}/crew`);
+      cy.contains("Hide Crew").click();
+      cy.url().should("not.include", `/movies/${movieId}/crew`);
+    });
+  });
 
   describe("From the Favorites page", () => {
     beforeEach(() => {
