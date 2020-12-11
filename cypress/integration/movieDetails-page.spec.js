@@ -1,6 +1,7 @@
 let movieId = null
 let movie;
 let reviews;
+let similarID= null;
 describe("Movie Details Page", () => {
   before(() => {
     cy.request(
@@ -22,6 +23,7 @@ describe("Movie Details Page", () => {
           )
           .its("body");
       })
+      
       .then((movieDetails) => {
         movie = movieDetails;
         return movieDetails.id;
@@ -63,6 +65,12 @@ describe("Movie Details Page", () => {
     cy.contains("Hide Reviews").click();
     cy.url().should("not.include", `/movies/${movieId}/reviews`);
   });
+
+  it("navigate to the full review page when a 'Full Review' link is clicked", () => {
+    cy.contains("Show Reviews").click();
+    cy.contains("Full Review").click();
+    cy.url().should("include", `/reviews`);
+  });
   
   it("should change browser URL when show/hide Similar movies is clicked", () => {
     cy.contains("Show Similar Movies").click();
@@ -70,6 +78,8 @@ describe("Movie Details Page", () => {
     cy.contains("Hide Similar Movies").click();
     cy.url().should("not.include", `/movies/${movieId}/similar`);
   });
+
+  
 
   it("should change browser URL when show/hide Recommendations movies is clicked", () => {
     cy.contains("Show Recommendations Movies").click();
