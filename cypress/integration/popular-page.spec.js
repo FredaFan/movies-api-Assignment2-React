@@ -100,6 +100,14 @@ describe("Popular Page ", () => {
                 });      
               });
         })
+
+        describe("Add to flag button test", () => {
+          it("should disappears in popular movies page when click the button", () => {
+            cy.wait(2000);
+            cy.contains("Add to Flag").click();
+            cy.get(".badge").contains(19);
+          });
+      })
       })
 
     })
