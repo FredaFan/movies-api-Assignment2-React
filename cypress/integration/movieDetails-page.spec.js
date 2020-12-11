@@ -63,11 +63,7 @@ describe("Movie Details Page", () => {
     cy.contains("Hide Reviews").click();
     cy.url().should("not.include", `/movies/${movieId}/reviews`);
   });
-  it("navigate to the full review page when a 'Full Review' link is clicked", () => {
-    cy.visit(`/movies/${movieId}/reviews`);
-    cy.contains("Full Review").click();
-    cy.url().should("include", `/reviews`);
-  });
+  
   it("should change browser URL when show/hide Similar movies is clicked", () => {
     cy.contains("Show Similar Movies").click();
     cy.url().should("include", `/movies/${movieId}/similar`);
