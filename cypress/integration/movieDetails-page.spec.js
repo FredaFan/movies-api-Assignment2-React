@@ -10,7 +10,7 @@ describe("Movie Details Page", () => {
     )
       .its("body")
       .then((response) => {
-        return response.results[2].id;
+        return response.results[1].id;
       })
       .then((arbitraryMovieIdignored) => {
         movieId = arbitraryMovieIdignored
@@ -29,7 +29,7 @@ describe("Movie Details Page", () => {
   });
   beforeEach(() => {
     cy.visit(`/`);
-    cy.get(".card").eq(2).find("img").click();
+    cy.get(".card").eq(1).find("img").click();
   });
 
   it("should display movie title in the page header", () => {
@@ -57,5 +57,28 @@ describe("Movie Details Page", () => {
     cy.get("img")
       .should("have.attr", "src")
   });
-  
+  it("should change browser URL when show/hide reviews is clicked", () => {
+    cy.contains("Show Reviews").click();
+    cy.url().should("include", `/movies/${movieId}/reviews`);
+    cy.contains("Hide Reviews").click();
+    cy.url().should("not.include", `/movies/${movieId}/reviews`);
+  });
+  it("navigate to the full review page when a 'Full Review' link is clicked", () => {
+    cy.visit(`/movies/${movieId}/reviews`);
+    cy.contains("Full Review").click();
+    cy.url().should("include", `/reviews`);
+  });
+  it("should change browser URL when show/hide Similar movies is clicked", () => {
+    cy.contains("Show Similar Movies").click();
+    cy.url().should("include", `/movies/${movieId}/similar`);
+    cy.contains("Hide Similar Movies").click();
+    cy.url().should("not.include", `/movies/${movieId}/similar`);
+  });
+
+  it("should change browser URL when show/hide Recommendations movies is clicked", () => {
+    cy.contains("Show Recommendations Movies").click();
+    cy.url().should("include", `/movies/${movieId}/recommendations`);
+    cy.contains("Hide Recommendations Movies").click();
+    cy.url().should("not.include", `/movies/${movieId}/recommendations`);
+  });
 });

@@ -52,7 +52,7 @@ describe("Navigation", () => {
   describe("From the home page", () => {
     beforeEach(() => {
       cy.visit("/");
-      
+      cy.wait(2000);
     });
     it("should navigate to the movie details page and change browser URL", () => {
       cy.get(".card").eq(1).find("img").click();
@@ -73,7 +73,7 @@ describe("Navigation", () => {
     });
   });
 
-  describe("From the Movie Details page ", () => {
+  /*describe("From the Movie Details page ", () => {
     beforeEach(() => {
       
       cy.visit(`/movies/${movieId}`);
@@ -112,13 +112,14 @@ describe("Navigation", () => {
       cy.contains("Full Details").click();
       cy.url().should("include", `/${recommendations[0].id}`);
     });
-  });
+  });*/
 
   describe("From the Favorites page", () => {
     beforeEach(() => {
       cy.visit("/");
       cy.get(".card").eq(0).find("button").click();
       cy.get("nav").find("li").eq(2).find("a").click();
+      cy.wait(2000);
       
     });
     it("should navigate to the movies detail page and change the browser URL", () => {
@@ -131,7 +132,7 @@ describe("Navigation", () => {
   describe("The Go Back button", () => {
     beforeEach(() => {
       cy.visit("/");
-      
+      cy.wait(2000);
     });
     it("should navigate from home page to movie details and back", () => {
       cy.get(".card").eq(1).find("img").click();
