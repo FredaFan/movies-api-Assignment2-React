@@ -102,7 +102,7 @@ describe("Upcoming Page ", () => {
         })
 
         describe("Add to watch-list button test", () => {
-          it("should disappears in home page when click the button", () => {
+          it("should disappears in upcoming movies page when click the button", () => {
             cy.wait(2000);
             cy.contains("Add to Watch List").click();
             cy.get(".badge").contains(19);
