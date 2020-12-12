@@ -2,11 +2,16 @@ import React from "react";
 import { storiesOf } from "@storybook/react";
 import "../node_modules/bootstrap/dist/css/bootstrap.css";
 import MovieCard from "../src/components/movieCard";
+import PersonCard from "../src/components/personCard";
 import FilterControls from "../src/components/filterControls";
 import MoviesHeader from "../src/components/headerMovieList";
+import PeopleHeader from "../src/components/headerPersonList";
 import MovieList from "../src/components/movieList";
 import MovieDetails from "../src/components/movieDetails";
+import PersonList from "../src/components/personList";
+import PersonDetails from "../src/components/personDetails";
 import MovieHeader from "../src/components/headerMovie";
+import PersonHeader from "../src/components/headerPerson";
 import MovieReviews from "../src/components/movieReviews";
 import MovieSimilar from "../src/components/movieSimilar";
 import MovieRecommendations from "../src/components/movieRecommendations";
@@ -17,6 +22,7 @@ import AddReviewButton from '../src/components/buttons/addReview'
 import AddToWatchListButton from '../src/components/buttons/addToWatchList.js'
 import AddToFlagButton from '../src/components/buttons/addToFlag.js'
 import BlankButton from '../src/components/buttons/blank.js'
+import BlankPersonButton from '../src/components/buttons/blankPerson.js'
 import { MemoryRouter } from "react-router";
 import GenresContextProvider from "../src/contexts/genresContext";
 import { action } from "@storybook/addon-actions";
@@ -100,6 +106,21 @@ const sample = {
   video: false,
   vote_average: 7,
   vote_count: 9692
+};
+
+const samplePerson = {
+  profile_path: "/hwpqQBzL3vVSppnMIINc2RCHXgn.jpg",
+  biography: "Anya Josephine Marie Taylor-Joy (born 16 April 1996) is an American-born Argentine-British actress. She first became known for making appearances on the fantasy series Atlantis (2015), and had her breakthrough with the period horror film The Witch (2015), for which she earned several accolades. She gained further recognition and praise for her role as Casey Cooke in the psychological horror films Split (2016) and Glass (2019), Lily Reynolds in the black comedy Thoroughbreds (2017) and Emma Woodhouse in the comedy-drama Emma (2020). She garnered critical acclaim for her performance as Beth Harmon in the Netflix miniseries The Queen's Gambit (2020).",
+  
+  
+  birthday: "1996-04-16",
+  place_of_birth: "Miami, Florida, USA",
+  also_known_as: ["안야 테일러-조이","Άνια Τέιλορ-Τζόι","Аня Тейлор-Джой","安雅·泰勒-乔伊", ], 
+  popularity: 46.328,
+  name: "Anya Taylor-Joy"
+  
+  
+
 };
 
 storiesOf("Home Page/MovieCard", module)
@@ -361,9 +382,64 @@ storiesOf("Upcoming Page/MovieList", module)
     );
   });
 
+
+
+  storiesOf("Popular People Page/PersonCard", module)
+  .addDecorator(story => (
+    <MemoryRouter initialEntries={["/"]}>{story()}</MemoryRouter>
+  ))
+  .add("default", () => (
+    <PersonCard
+      person={samplePerson}
+      action={(person) => {
+        return <BlankPersonButton person={person} />;
+      }}
+    />
+  ))
+  .add("exception", () => {
+    const sampleNoPoster = { ...samplePerson, poster_path: undefined };
+    return (
+      <PersonCard
+      person={sampleNoPoster}
+        action={(person) => {
+          return <BlankPersonButton person={person} />;
+        }}
+      />
+    );
+  });
+
   
 
+  storiesOf("Popular People Page/Header", module).add("default", () => (
+    <PeopleHeader name="Popular People" numPeople={20} />
+  ));
+  
+  storiesOf("Popular People Page/PersonList", module)
+    .addDecorator(story => (
+      <MemoryRouter initialEntries={["/"]}>{story()}</MemoryRouter>
+    ))
+    .add("default", () => {
+      const people = [samplePerson, samplePerson, samplePerson, samplePerson, samplePerson];
+      return (
+        <PersonList
+          people={people}
+          action={(people) => {
+            return <BlankPersonButton people={people} />;
+          }}
+        />
+      );
+    });
 
+
+    storiesOf("Person Details Page/PersonDetails", module).add("default", () => (
+      <PersonDetails person={samplePerson} />
+    ));
+    
+    storiesOf("Person Details Page/PersonHeader", module)
+      .addDecorator(story => (
+        <MemoryRouter initialEntries={["/"]}>{story()}</MemoryRouter>
+      ))
+      .add("default", () => <PersonHeader person={samplePerson} />);
 
 
 
