@@ -67,7 +67,7 @@ Name: Jiayu Fan
 
 >Shows the full detailst for a similar movie. 
 
-![movieDetail- show recommendations movies]!![](/Users/fanjiayu/Desktop/截屏2020-12-12 下午9.43.36.png)
+![movieDetail- show recommendations movies]![截屏2020-12-12 下午9.43.36](https://tva1.sinaimg.cn/large/0081Kckwgy1glo2xnlqlkj31c00u0e81.jpg)
 
 >Clicking the 'Show Recommendations r Movies' button will display title and part of movie overview from recommendations  movies.
 
@@ -195,13 +195,6 @@ Name: ... your name ...
 ## App Features.
 
 [Document each new feature/page in your Movies Fan app, including: Feature Name; Its objective/purpose; The associated test file; a screenshot of its UI.]
-e,g,
-
-+ Movie Details page - Shows the details about a movie. The Show reviews button reveals an excerpt for each critic review of the movie.
-
-Tests: cypress/integration/movieDetails.spec.js 
-
-
 
 + Movie Details page - The Show similar movies, Show recommendations movies, Show cast and Show crew buttons will reveal some content of the movie when they are clicked.
 
@@ -215,7 +208,7 @@ Tests: cypress/integration/movieDetails-page.spec.js
 
 Tests: cypress/integration/favorite-page.spec.js 
 
-![](/Users/fanjiayu/Desktop/截屏2020-12-12 下午11.05.17.png)
+![截屏2020-12-12 下午11.05.17](https://tva1.sinaimg.cn/large/0081Kckwgy1glo2yjt1fhj31c00u01kx.jpg)
 
 
 
@@ -223,7 +216,7 @@ Tests: cypress/integration/favorite-page.spec.js
 
 Tests: cypress/integration/addReview-page.spec.js 
 
-![截屏2020-12-12 下午11.11.17](/Users/fanjiayu/Desktop/截屏2020-12-12 下午11.11.17.png)
+![截屏2020-12-12 下午11.11.17](https://tva1.sinaimg.cn/large/0081Kckwgy1glo2yxnzo0j31c00u07wh.jpg)
 
 
 
