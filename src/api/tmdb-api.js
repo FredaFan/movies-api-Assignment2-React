@@ -89,18 +89,22 @@ export const getNowPlayingMovies = () => {
 
 export const getMovieSimilar = id => {
   return fetch(
-    `https://api.themoviedb.org/3/movie/${id}/similar?api_key=${process.env.REACT_APP_TMDB_KEY}`
-  )
-    .then(res => res.json())
-    .then(json => json.results);
+    `/api/movies/${id}/similar`,{headers: {
+      'Authorization': window.localStorage.getItem('token')
+   },
+   method:'get'
+ }
+ ).then(res => res.json());
 };
 
 export const getMovieRecommendations = id => {
   return fetch(
-    `https://api.themoviedb.org/3/movie/${id}/recommendations?api_key=${process.env.REACT_APP_TMDB_KEY}`
-  )
-    .then(res => res.json())
-    .then(json => json.results);
+    `/api/movies/${id}/recommendations`,{headers: {
+      'Authorization': window.localStorage.getItem('token')
+   },
+
+ }
+ ).then(res => res.json());
 };
 
 export const getMovieCast = id => {
