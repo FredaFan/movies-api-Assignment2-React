@@ -38,5 +38,6 @@
     "babel-loader": "^8.0.6",
     "source-map-explorer": "^2.5.0",
     "start-server-and-test": "^1.10.6"
-  }
+  },
+  "proxy": "http://localhost:8080"
 }
