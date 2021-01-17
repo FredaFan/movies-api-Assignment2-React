@@ -1,290 +1,329 @@
-# Assignment 1 - ReactJS app.
+# Assignment 2 - Agile Software Practice.
+
+Name: Jiayu Fan
+
+## Target Web API.
+
+...... Document the Web API that is the target for this assignment's CI/CD pipeline. Include the API's endpoints and any other features relevant to the creation of a suitable pipeline, e.g.
+
++ Get /api/movies - returns an array of movie objects.
+
++ Get /api/movies/:id - returns detailed information on a specific movie.
+
++ Put /api/movies/:id - update a specific movie. The request payload includes the some/all of the following movie properties to be updated: title, genre list, release date.
+
++ Post /api/movies - add a new movie with with correct title and id to movie arrays.
+
++ Delete /api/movies - delete a movie from an array of movie objects.
+
++ Get /api/users -return an array of users.
+
++ Post /api/users - add a new user with usename and validated password to the database. 
+
++ Put /api/users/:id - update a specific user. The request payload includes the some/all of the following user properties to be updated: user id, password.
+
++ Post /api/users/:username/favourites - add a movie to user's favourites by sending invalid movie id but each movie can be added once or it will send error. 
+
++ Get /api/users/:username/favourites - add a movie to user's favourites by sending invalid movie id but each movie can be added once or it will send error. 
+
++ Get /api/people - returns an array of popular actors.
+
++ Get /api/people/:id - returns detailed information on a specific person.
+
++ Get /api/upcoming - returns an array of upcoming movie objects.
+
+  
+
+## Error/Exception Testing.
+
+.... From the list of endpoints above, specify those that have error/exceptional test cases in your test code, the relevant test file and the nature of the test case(s), e.g.
+
++ Post /api/movies - test when the new movie has no title, invalid release date, empty genre list. Test adding a movie without prior authentication. See tests/functional/api/movies/index.js 
++ Get/api/movies - test when try to get movies  without prior authentication. See tests/functional/api/movies/index.js 
++ Get/api/movies/: id - test when try to access to a movie with an invaild id, that's to say input a movie id that is not corresct. See tests/functional/api/movies/index.js 
++ Get/api/movies/: id/reviews - test when try to get selected movies reviews with an invalid movie id. See tests/functional/api/movies/index.js 
++ Post /api/users - test when register a new user with the invalidated password. See tests/functional/api/users/index.js 
++ Post /api/users/favourites - test when add an invalid movie id into user's favourites. See tests/functional/api/users/index.js 
++ Post /api/users/favourites - test when add the same movie id twice in user's favourites. See tests/functional/api/users/index.js 
+
+## Continuous Delivery/Deployment.
+
+..... Specify the URLs for the staging and production deployments of your web API, e.g.
+
++ https://dashboard.heroku.com/apps/movies-api-staging-jiayufan - Staging deployment
++ https://dashboard.heroku.com/apps/movies-api-assignment2-fjy - Production
+
+.... Show a screenshots from the overview page for the two Heroku apps e,g,
+
++ Staging app overview 
+
+![截屏2021-01-14 下午4.10.38](https://tva1.sinaimg.cn/large/008eGmZEgy1gmnph8dof5j31c00u0aq1.jpg)[stagingapp]
+
++ Production app overview 
+
+
+
+![Production App](https://tva1.sinaimg.cn/large/008eGmZEgy1gmnr955s0mj31c00u0wuh.jpg)
+
+[If an alternative platform to Heroku was used then show the relevant page from that platform's UI.]
+
+## Feature Flags (If relevant)
+
+... Specify the feature(s) in your web API that is/are controlled by a feature flag(s). Mention the source code files that contain the Optimizerly code that implement the flags. Show screenshots (with appropriate captions) from your Optimizely account that prove you successfully configured the flags.
+
+
+
+
+
+# Assignment 2 - Web API.
 
 Name: Jiayu Fan
 
 ## Features.
 
-...... A bullet-point list of the ADDITIONAL user features you have implemented for the  Movies Fan app ......,
+...... A bullet-point list of the ADDITIONAL features you have implemented in the API **THAT WERE NOT IN THE LABS** ......,
 
- + Feature 1 - Upcoming movie page: Users can view some movies which will be displayed in the future.
- + Feature 2 - Add to watch-list button: Users can click this button and then the movie will disappear in upcoming page.
- + Feature 3 - Popular movie page: Users can view some hot and popular movies recently.
- + Feature 4 - Add to Flag button: Users can click this button and then the movie will disappear in popular page.
- + Feature 5 - Top Rated movie page: Users can view some movies which got high vote count.
- + Feature 6 - Now Playing movie page: Users can view some movies which are on now.
- + Feature 7 - Poppular People Page: Users can see some actors and people who are very popular.
- + Feature 8 - Movie details page: Users can get into this page by clicking any movie in any movie page and then you can see some new added movie details in this page such as vote count and popularity.
- + Feature 9 - Movie review page: Users can see brief view in details page containing author and part of review, you can see full review if you click "Full Review" link in addition.
- + Feature 10 - Similar movie page in details page: Users can click show similar movies button and then see similar movies with title and part of overview. If you click "Full Details" link, you can see the whole details of the similar movie in a new detail page. You can click Hide similar movies if you don't want to see them.
- + Feature 11 - Recommendations movie page in details page: Users can click show recommendations movies button and then see recommendations with title and part of overview. If you click "Full Details" link, you can see the whole details of the recommendation in a new detail page. You can click Hide Recommendations movies if you don't want to see them.
- + Feature 12 - Movie Cast page in details page: Users can click show cast button and then see movie casts with cast name, character, popularity, known department and profile. You can click Hide Cast if you don't want to see them.
- + Feature 13 - Movie Crew page in details page: Users can click show crew button and then see movie crew with crew name, job, popularity, known department and profile. You can click Hide Crew if you don't want to see them.
- + Feature 14 - People Details page: Users can get into this page by clicking any person in popular people page and then you can see some people details in this page such as profile, biography, birthday and so on.
+ + Feature 1 - Users can add a movie into their favourite list and can also delete them
+ + Feature 2 - Set users a flag attribute that's to say users can also add a movie to their flag list
+ + Feature 3 - Add genres api which can return the genres of movies
+ + Feature 4 - Add upcoming movies api
+ + Feature 5 - Add popular people api
+ + Feature 6 - Add top rated movies api
+ + Feature 7 - Add now playing movies api
+ + Feature 8 - Add similar movies api
+ + Feature 9 - Add recommendations movies api
+ + Feature 10 - Add reviews of the movies api
 
-## Setup requirements (If required).
+## Installation Requirements
 
-...... A brief explanation of any non-standard setup steps necessary to run your app/client locally (after cloning the repo) ........
+Describe what needs to be on the machine to run the API (Node v?, NPM, MongoDB instance, any other 3rd party software not in the package.json). 
 
-## API Data Model.
+The react app github URL is 
 
-..... List the additional TMDB endpoints used in your assignment, e.g.
+```bat
+https://github.com/FredaFan/movies-api-Assignment2-React
+```
 
-+ https://api.themoviedb.org/3/movie/${id} - get detailed information on a specific movie. 
-+ https://api.themoviedb.org/3/genre/movie/list - get a list of movie genres
-+ https://api.themoviedb.org/3/movie/upcoming - get upcoming movies
-+ https://api.themoviedb.org/3/movie/popular - get popular movies
-+ https://api.themoviedb.org/3/movie/top_rated - get top rated movies
-+ https://api.themoviedb.org/3/movie/now_playing - get now playing movies
-+ https://api.themoviedb.org/3/movie/${id}/similar - get similar movies of the specific movie
-+ https://api.themoviedb.org/3/movie/${id}/recommendations - get recommendations movies of the specific movie
-+ https://api.themoviedb.org/3/movie/${id}/credits - get cast and crew of the specific movie
-+ https://api.themoviedb.org/3/person/popular - get popular people
-+ https://api.themoviedb.org/3/person/${id} - get detailed information on 
+## API Configuration
 
-## App Design.
+Describe any configuration that needs to take place before running the API. For example, creating an ``.env`` and what variables to put in it. Give an example of how this might be structured/done.
+REMEMBER: DON'T PUT YOUR OWN USERNAMES/PASSWORDS/AUTH KEYS IN THE README OR ON GITHUB, just placeholders as indicated below:
 
-### Component catalogue (If required).
+```bat
+NODE_ENV=development
+PORT=8080
+HOST=localhost
+mongoDB=mongodb+srv://admin:admin123@cluster0.8hkci.mongodb.net/test?retryWrites=true&w=majority
+TMDB_KEY=0c77793c5b12c423b54bd5b30b88f9b0
+seedDb=true
+SECRET=ilikecake
+```
 
-....... Insert a screenshot from the Storybook UI, hi-light stories relating to new/modified components you developed - see example screenshot below] .......
 
-![storybook]
+## API Design
 
-![截屏2020-12-12 下午8.07.12](https://tva1.sinaimg.cn/large/0081Kckwgy1gllue02k9uj30bg14cad7.jpg)
+Give an overview of your web API design, perhaps similar to the following: 
 
+GET
 
+/api/movies |Get a list of movies
 
-### UI Design.
+/api/movies/{movieid} | Get a Movie
 
-...... Insert screenshots of the new/modified views you have added to the Movies Fan app. Include a caption for each one clearly stating its purpose and any user interaction it supports ........
+/api/movies/{movieid}/reviews | Get all reviews for movie  
 
-![movieDetail- show similar movies]
+/api/movies/{movieid}/similar | Get all similar movies of the movie 
 
-![](https://tva1.sinaimg.cn/large/0081Kckwgy1gllsdvxwwij31c00u0n3x.jpg)
+/api/movies/{movieid}/recommendations | Get all recommendations movies of the movie
 
->Shows detailed information on a movie containing vote count and popularity. Clicking the 'Show Similar Movies' button will display title and part of movie overview from similar movies.
+/api/users |Gets a list of users | 
 
-![similar movies' details]![截屏2020-12-12 下午9.40.25](https://tva1.sinaimg.cn/large/0081Kckwgy1gllsgbw4n4j31c00u0nn2.jpg)
+/api/users/username/favourites |Gets a detailed information of user's favourite movie | 
 
->Shows the full detailst for a similar movie. 
+/api/users/username/flags |Gets a detailed information of user's flag movie | 
 
-![movieDetail- show recommendations movies]![截屏2020-12-12 下午9.43.36](https://tva1.sinaimg.cn/large/0081Kckwgy1glo2xnlqlkj31c00u0e81.jpg)
+/api/people |Gets a list of popular actors | 
 
->Clicking the 'Show Recommendations r Movies' button will display title and part of movie overview from recommendations  movies.
+/api/people/{peopleid} | Get a selected people with detailed information
 
+/api/upcoming |Get a list of upcoming movies
 
+/api/genres |Get a list of genres of movies
 
-![recommendations  movies' details]!![](https://tva1.sinaimg.cn/large/0081Kckwgy1gllsm32v2sj31c00u04qp.jpg)
+/api/top |Get a list of top rated movies
 
->Shows the full detailst for a recommendation  movie. 
+/api/nowplaying |Get a list of now playing movies
 
 
 
-![movieDetail- show movie cast]!![截屏2020-12-12 下午9.48.13](https://tva1.sinaimg.cn/large/0081Kckwgy1gllsq33hd2j31c00u07wh.jpg)
+POST
 
->Clicking the 'Show Cast' button will display cast name, character, popularity, knwon department and profile from the movies' cast
+/api/movies |Add a new movie with id and title
 
-![movieDetail- show movie crew]!
+/api/users |Register a new user
 
-![截屏2020-12-12 下午10.00.46](https://tva1.sinaimg.cn/large/0081Kckwgy1gllt1vxf6qj31c00u0e81.jpg)
+/api/uses/{username}/favourites |Add a movie into users favourites list
 
->Clicking the 'Show Crew' button will display crew name, job, popularity, knwon department and profile from the movies' crew
+/api/uses/{username}/flags |Add a movie into users flag list
 
 
 
-![Popular movie- show popular movie list]!![截屏2020-12-12 下午10.02.11](https://tva1.sinaimg.cn/large/0081Kckwgy1gllt3oan4yj31c00u0x6r.jpg)
+DELETE
 
->Clicking the 'Popular' link in the header will display popular movie list.
+/api/uses/{username}/flags |Delete a movie from users flag list with correct ID
 
 
 
+If you have your API design on an online platform or graphic, please link to it (e.g. [Swaggerhub](https://app.swaggerhub.com/)).
 
 
-![Top Rated movie- show top rated movie list]!![截屏2020-12-12 下午10.06.33](https://tva1.sinaimg.cn/large/0081Kckwgy1gllt7w1d02j31c00u01kz.jpg)
+## Security and Authentication
 
->Clicking the 'Top Rated' link in the header will display top rated movie list.
+Give details of authentication/ security implemented on the API(e.g. passport/sessions). Indicate which routes are protected.
 
+![passport](https://tva1.sinaimg.cn/large/008eGmZEgy1gmqwe4bju0j312k08on1j.jpg)
 
 
-![Now Playing movie- show now playing movie list]!![截屏2020-12-12 下午10.07.50](https://tva1.sinaimg.cn/large/0081Kckwgy1gllt9akgurj31c00u0x6r.jpg)
 
->Clicking the 'Now Playing' link in the header will display now playing movie list.
+![PrivateRoute](https://tva1.sinaimg.cn/large/008eGmZEgy1gmqwjmhyuaj311g0mk112.jpg)
 
 
 
-![Popular people- show popular people list]!![截屏2020-12-12 下午10.09.22](https://tva1.sinaimg.cn/large/0081Kckwgy1glltam9nq8j31c00u0e83.jpg)
+## Integrating with React App
 
->Clicking the 'Popular people' link in the header will display popular people list.
+Describe how you integrated your React app with the API. Perhaps link to the React App repo and give an example of an API call from React App. For example: 
 
+~~~Javascript
+export const getMovies = () => {
+  return fetch(
+     '/api/movies',{headers: {
+       'Authorization': window.localStorage.getItem('token')
+    }
+  }
+  )
+    .then(res => res.json())
+    .then(json => {return json.results;});
+};
 
+~~~
 
-![Popular people details- show popular people details]!![截屏2020-12-12 下午10.10.20](https://tva1.sinaimg.cn/large/0081Kckwgy1glltbll3jwj31c00u04qp.jpg)
 
->Clicking the a person card and it will link to a person details page.
 
 
 
+~~~Javascript
+export const getUpcomingMovies = () => {
+  return fetch(
+    '/api/upcoming',{headers: {
+      'Authorization': window.localStorage.getItem('token')
+   }
+ }
+ ).then(res => res.json());
+};
 
+~~~
 
+## 
 
 
-## Routing.
 
-...... Insert a list of the additional routes supported by your Movies Fan app. If relevant, specify which of the routes require authentication, i.e. protected/private.
+~~~Javascript
+export const getTopRatedMovies = () => {
+  return fetch(
+    '/api/top',{headers: {
+      'Authorization': window.localStorage.getItem('token')
+   }
+ }
+ ).then(res => res.json());
+};
 
-+ /movies/favorites (protected) - displays the user's favorite movies selection.
-+ /reviews/:id (public) - displays the full text of a movie review.
-+ /movies/:id/similar (public). - show similar movies of the selected movie in movie detail page.
-+ /movies/:id/recommendations (public). - show recommendation movies of the selected movie in movie detail page.
-+ /movies/:id/recommendations (public). - show recommendation movies of the selected movie in movie detail page.
-+ /movies/:id/cast (public). - show cast of the selected movie in movie detail page.
-+ /movies/:id/crew (public). - show recommendation movies of the selected movie in movie detail page.
-+ /movies/upcoming (public) - displays the upcoming movies.
-+ /movies/upcoming (public) - displays the upcoming movies.
-+ /movies/popular (public) - displays the popular movies.
-+ /movies/top (public) - displays the top rated movies.
-+ /movies/nowplaying (public) - displays the now playing movies.
-+ /people/popular (public) - displays the popular people page.
-+ /people/:id (public) - displays details of the selected person.
+~~~
 
-### Data hyperlinking.
 
-.... Use screenshots to illustrate where data hyperlinking is present in your views - include captions.
 
+~~~Javascript
+export const getNowPlayingMovies = () => {
+  return fetch(
+    '/api/nowplaying',{headers: {
+      'Authorization': window.localStorage.getItem('token')
+   }
+ }
+ ).then(res => res.json());
+};
 
+~~~
 
-![Full details link- show full details of the similar movie]!![637FD79F-CA0D-40E7-9CF7-48263CF9813C](https://tva1.sinaimg.cn/large/0081Kckwgy1glltwjsx73j31k20u0h1l.jpg)
 
->Clicking the 'Full Details' for a detail page which will display the full details of the selected movie.
 
+~~~Javascript
+export const getPopularPerson = () => {
+  return fetch(
+    '/api/people',{headers: {
+      'Authorization': window.localStorage.getItem('token')
+   }
+ }
+ ).then(res => res.json());
+};
 
+~~~
 
-![Full details link- show full details of the recommendations movie]!![0D4EC80C-D7A9-48FC-88B4-1D08E42D31CA](https://tva1.sinaimg.cn/large/0081Kckwgy1gllu0totb8j31gj0u018k.jpg)
 
->Clicking the 'Full Details' for a detail page which will display the full details of the selected movie.
 
 
 
-![Add to Flag button]!
+~~~Javascript
+export const getMovieReviews = id => {
+  return fetch(
+    `/api/movies/${id}/reviews`,{headers: {
+      'Authorization': window.localStorage.getItem('token')
+   },
 
-![88A27680-B4C0-4EBD-AB81-6957A0CCD13B](https://tva1.sinaimg.cn/large/0081Kckwgy1gllu3e2joaj31lq0u07po.jpg)
+ }
+ ).then(res => res.json());
+};
 
->Clicking a "Add to Flag" button causes the display of disapperance of the movie in this page.
+~~~
 
 
 
-![Add to Flag button]!![9092652E-2063-41E2-9D9C-97819DEAFA73](https://tva1.sinaimg.cn/large/0081Kckwgy1gllu78vio4j31h70u0nee.jpg)
 
->Clicking a card causes the display of that person's details.
 
+~~~Javascript
+export const getMovieSimilar = id => {
+  return fetch(
+    `/api/movies/${id}/similar`,{headers: {
+      'Authorization': window.localStorage.getItem('token')
+   },
+   method:'get'
+ }
+ ).then(res => res.json());
+};
 
+~~~
 
 
 
 
 
-## Independent learning (If relevant).
+~~~Javascript
+export const getMovieRecommendations = id => {
+  return fetch(
+    `/api/movies/${id}/recommendations`,{headers: {
+      'Authorization': window.localStorage.getItem('token')
+   },
 
-. . . . . Briefly mention each technologies/techniques used in your project codebase that were not covered in the lectures/labs. Provide source code filename references to support your assertions and include reference material links (articles/blogs).
+ }
+ ).then(res => res.json());
+};
 
----------------------------------
+~~~
 
-# Assignment 1 - Agile Software Practice.
 
-Name: ... your name ...
 
-## App Features.
+## Extra features
 
-[Document each new feature/page in your Movies Fan app, including: Feature Name; Its objective/purpose; The associated test file; a screenshot of its UI.]
+In order to have access to the private router, users must log in first or just sign up a new username.
 
-+ Movie Details page - The Show similar movies, Show recommendations movies, Show cast and Show crew buttons will reveal some content of the movie when they are clicked.
+## Independent learning.
 
-Tests: cypress/integration/movieDetails-page.spec.js 
-
-![截屏2020-12-12 下午11.02.50](https://tva1.sinaimg.cn/large/0081Kckwgy1glluu2tbyuj31c00u0e81.jpg)
-
-
-
-+ Favorites page - Favorites page will show the movie which is clicked by th "Add to favorite" button in home page.
-
-Tests: cypress/integration/favorite-page.spec.js 
-
-![截屏2020-12-12 下午11.05.17](https://tva1.sinaimg.cn/large/0081Kckwgy1glo2yjt1fhj31c00u01kx.jpg)
-
-
-
-+ Add review - Show the add review form and consider some different situations which related to nesting tests.
-
-Tests: cypress/integration/addReview-page.spec.js 
-
-![截屏2020-12-12 下午11.11.17](https://tva1.sinaimg.cn/large/0081Kckwgy1glo2yxnzo0j31c00u07wh.jpg)
-
-
-
-+ Popular movie page - Shows the popular movie. When you can click "Add to Flag" button, the movie will disappear.
-
-Tests: cypress/integration/popular-page.spec.js 
-
-![截屏2020-12-12 下午11.14.55](https://tva1.sinaimg.cn/large/0081Kckwgy1gllv6e346gj31c00u0x6r.jpg)
-
-
-
-+ Upcoming movies page - Shows the upcoming movies and the movie will disappear if you click the "Add to Watch List"
-
-Tests: cypress/integration/upcoming-page.spec.js 
-
-![截屏2020-12-12 下午11.25.39](https://tva1.sinaimg.cn/large/0081Kckwgy1gllvhqoaevj31c00u0u0z.jpg)
-
-
-
-+ Top rated movies page - Shows the top rated movies.
-
-Tests: cypress/integration/topRated-page.spec.js 
-
-![截屏2020-12-12 下午11.15.46](https://tva1.sinaimg.cn/large/0081Kckwgy1gllv8jix7dj31c00u01kz.jpg)
-
-
-
-+ Now paying movies page - Shows now playing movies.
-
-Tests: cypress/integrationnowPlaying-page.spec.js 
-
-![截屏2020-12-12 下午11.17.31](https://tva1.sinaimg.cn/large/0081Kckwgy1gllva7oxf4j31c00u0x6r.jpg)
-
-
-
-+ Popular people page - Shows the popular people.
-
-Tests: cypress/integration/person-page.spec.js 
-
-![截屏2020-12-12 下午11.22.03](https://tva1.sinaimg.cn/large/0081Kckwgy1gllvem4dhtj31c00u0e83.jpg)
-
-
-
-## Testing.
-
-Cypress Dashboard URL:https://dashboard.cypress.io/projects/nkytgt
-
-### Advanced Testing (If required).
-
-[State briefly each instances of boundary and/or error/exceptional test case in your project]
-e.g.
-
-+ cypress/integration/addReview-page.spec.js - test the function of submit the revies including several situations (corrects, erros and exceptions) with nesting tests. 
-+ cypress/integration/favorite-page.spec.js - test when a movie was added to favorites and test the "Write review" button.
-+ cypress/integration/movieDetails-page.spec.js - test movie details page and test "Show reviews", "Show similar movies", "Show recommendations", "Show cast" and "Show crew" buttons. They will change the url when they are clicked.
-+ cypress/integration/navigation.spec.js - test when the link in the page header was clicked, it will navigate to the certain url and test "Go back" button in each page.
-+ cypress/integration/upcoming-page.spec.js - test show header, filtering, movie card and test the "Add to Watch List" button.
-+ cypress/integration/popular-page.spec.js - test show header, filtering, movie card and test the "Add to Flag" button.
-+ cypress/integration/topRated-page.spec.js - test show header, filtering and movie card.
-+ cypress/integration/nowPlaying-page.spec.js - test show header, filtering and movie card.
-+ cypress/integration/person-page.spec.js - test show header, filtering and movie card.
-
-## Independent learning (If relevant).
-
-[ Itemize each technologies/techniques used in your project that were not covered in the lectures/labs. Provide the necessary evidence of their use (e,g, project file names, screenshots, service URL, etc)
-
-List reference material links (articles/blogs).
-
----------------------------------
-
-[]: 
+. . State the non-standard aspects of React/Express/Node (or other related technologies) that you researched and applied in this assignment . .  
